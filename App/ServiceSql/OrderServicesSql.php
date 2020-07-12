@@ -6,6 +6,10 @@ use PDO;
 use PDOException;
 use Config\Database\DbProvider as Conexion;
 use App\Models\Order as Order;
+use App\Models\Eventos as Eventos;
+use App\ServiceSql\EventoServiceSql as EventSql;
+use App\Models\EventOrder as EventOrder;//Modelo
+use App\ServiceSql\EventOrderServiceSql as EvenOrSql;//Sql
 //__USE ADITIONAL___
 use App\ServiceSql\UserServiceSql as UserSql;
 use App\Models\User as User;
@@ -37,7 +41,7 @@ public function getAll(): array{
         }
         return $result;
     }
-public function get(int $id): ?Order{
+public function get(int $id): ?Order {
         $result = null;
 
         try {
@@ -94,7 +98,7 @@ public function create(Order $model): void{
     }
 
 //==========FUNCIONES PRIVATE================
-private function getDetail(int $id_order): array{
+private function getDetail(int $id_order): array {
         $stm = $this->_db->prepare('select * from order_detail where id_order = :id_order');
         $stm->execute(['id_order' => $id_order]);
 
@@ -125,7 +129,7 @@ private function prepareOrderCreation(Order &$model): void{
             $model->total_time += $item->total_time;
         }
 
-           $minutos=$model->total_time;
+          /* $minutos=$model->total_time;
            foreach ($model->hoursdetail as $item) {
             $minutos-=60;//Se Resta por 1hora cont 60 mtos
             if ($minutos>0) {
@@ -134,20 +138,23 @@ private function prepareOrderCreation(Order &$model): void{
                 $t=60+$minutos;
             }
             $item->use_time = $t;
-        }
+        } */
 
 
     }
 private function orderCreate(Order &$model): void{
         $stm = $this->_db->prepare('
-            INSERT INTO `order`(id_client, total_price, total_time, created, updated)
-            values(:id_client, :total_price, :total_time, :created, :updated)
+            INSERT INTO `order`(id_client,key_transaction, paypal_data, status, total_price, total_time, created, updated)
+            values(:id_client,:key_transaction, :paypal_data, :status, :total_price, :total_time, :created, :updated)
         ');
 
 //`id_client`, `total_price`, `total_time`, `created`, `updated`
        $now = date('Y-m-d H:i:s');//Fecha y Hora Sistem
         $stm->execute([
             'id_client' => $model->id_client,
+            'key_transaction' => $model->key_transaction,
+            'paypal_data' => $model->paypal_data,
+            'status' => $model->status,
             'total_price' => $model->total_price,
             'total_time' => $model->total_time,
             'created' => $now,
@@ -155,6 +162,16 @@ private function orderCreate(Order &$model): void{
         ]);
 
         $model->id = $this->_db->lastInsertId();//ULTIMO REGIST
+    //Modifica el Titulo del Evento agregando el ID de la orden..
+        $event =new Eventos();
+        $event->id= $model->id_evento ;
+        $event->title="Domicilio (".$model->id.")" ;
+        $this->modificaEvento($event); //Llama a Funcion Privada
+    //Carga la tabla realacional 1 a 1 Evento Orden
+         $evenOrd = new EventOrder();
+         $evenOrd->id_evento= $model->id_evento;//id del Evento
+         $evenOrd->id_order = $model->id;//id de la Orden
+         $this->relacionaEventOrder($evenOrd);//Llama a Funcion Privada
     }
 private function orderDetailCreate(Order $model): void{
 
@@ -196,7 +213,16 @@ private function hoursDetailCreate(Order $model): void{
             ]);
         }
     }
+private function modificaEvento(Eventos $model ): void {
+    //Se modifica el Titulo del Evento...Con sus Detalles.
+    $sqlEvent=new EventSql();
+$sqlEvent->updateTitle($model);
 
+}
+private function relacionaEventOrder(EventOrder $model):void{
+    $sqlEveOrd = new EvenOrSql();
+    $sqlEveOrd->create($model);
+}
 
 }
 ?>

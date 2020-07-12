@@ -17,7 +17,7 @@ public function __construct(){
 //METODOS
 public function mostrarUsuarios(): array{
 
-return  $this->_usersql->getAll() ;
+return  $this->_usersql->getAll();
 
 }
 

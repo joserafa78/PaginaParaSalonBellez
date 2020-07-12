@@ -1,13 +1,88 @@
 <?php
-    define('DS', DIRECTORY_SEPARATOR);
-	define('ROOT', realpath(dirname(__FILE__)) . DS);
-	define('URL', "http://localhost/GoldNails/");
+
 //___________________________________
 require_once 'vendor/autoload.php';
 require_once 'config.php';
-require_once "App/Views/index.html";//Index vistas.
+//require_once 'App/Controllers/carrito.php';
+require_once "App/Views/index.php";//Index vistas.++++++
+//require_once"App/Views/Car/mostrarCarrito.php";
 
-use App\ServiceSql\UserServiceSql as UserSql;
+
+//-----------------
+/*
+use App\ServiceSql\ServicesServiceSql as SerSQL;
+$SERV=new SerSQL();
+var_dump( $SERV->Sharh("secado") );
+
+use App\Models\User as user;//Modelo
+use App\ServiceSql\UserServiceSql as USERSql;
+
+$user=new user();
+$user->id="42";
+$user->first_name="Raul ";
+$user->last_name="Gorrin";
+$user->phone_number="4444444";
+$user->direction="España";
+$userSQL=new USERSql();
+
+
+var_dump($userSQL->updateBasic($user));
+echo "Listo..ww2";
+
+
+
+use App\ServiceSql\EventoServiceSql as EvSQL;
+$EvenId =new  EvSQL();
+var_dump($EvenId->getAllComplete());
+
+
+use App\Models\EventOrder as EventOrder;//Modelo
+use App\ServiceSql\EventOrderServiceSql as EvenOrSql;//Sql
+
+$eveord = new EventOrder();
+$eveord->id_evento="12";
+$eveord->id_order="24";
+$EOSQL = new EvenOrSql();
+$EOSQL->create($eveord);
+         echo " LISTO..";
+
+
+use App\ServiceSql\EventoServiceSql as EvenSql;
+use App\Models\Eventos as Evento;
+$EveSql = new EvenSql();
+var_dump($EveSql->getAll());
+         echo " LISTO..";
+
+//--------------
+use App\Models\Eventos as Eventos;
+use App\ServiceSql\EventoServiceSql as EventSql;
+$evento = new Eventos();
+$evento->id="3";
+$evento->title="Servicio (10232)";
+$evento->description="Solo es una Prueba";
+$evento->color="grey";
+$evento->textColor="red";
+$evento->start="2010-07-13 13:00:00";
+$evento->end="2010-07-13 14:00:00";
+$sqlEvent=new EventSql();
+$sqlEvent->updateTitle($evento);
+echo "TITULO ACTUALIZADO. ";
+
+
+//use App\ServiceSql\UserServiceSql as UserSql;
+
+use App\ServiceSql\ServicesServiceSql as servsql;
+use App\Models\Services as Serv;
+$ser = new servsql();
+$id=18;
+var_dump($ser->get($id));
+$obj=new Serv();
+$obj=$ser->get($id);
+echo " --MOSTRO--";
+
+echo "Nomber:".$obj->name;
+echo "Nomber:".$obj->description;
+
 //___________________________________
 /*
 use App\ServiceSql\DayDiaryServiceSql as DaySql;
@@ -26,11 +101,18 @@ use App\Models\User as User;
 use App\ServiceSql\UserServiceSql as UserSql;
 
 
-//____________________________________
-$user=new UserSql();
+//____________________SEGURIDAD________________
+use App\Models\User as user;//Modelo
+use App\ServiceSql\UserServiceSql as USERSql;
 
-var_dump($user->getAll());
-*/
+$user=new user();
+$user->email="nail@gmail.com";
+$user->password="000000";
+
+$userSQL=new USERSql();
+
+var_dump($userSQL->trueEmail($user));
+
 /*
 $horaDatall=new HoursDet();
     $horaDatall->id=2;
@@ -88,7 +170,7 @@ $Bc->create($h3);
 
 
 
-$orden=new Order();
+$orden=new Order();++++++++++++++++
 //$orden->id;
 $orden->id_client=1;
 

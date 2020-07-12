@@ -57,10 +57,10 @@ class  UserServiceSql{
         return $result;
     }
 
-    public function create(User $model): void{
+    public function create(User $model): string{
         try {
             $stm = $this->_db->prepare(
-        'INSERT INTO user (first_name, last_name, user_name, phone_number, direction, email, password, image, created, updated)VALUES (:first_name, :last_name, :user_name, :phone_number, :direction, :email, :password, :image, :created, :updated)'
+        'INSERT INTO user (first_name, last_name, user_name, rol,phone_number, direction, email, password, image, created, updated)VALUES (:first_name, :last_name, :user_name,:rol,:phone_number, :direction, :email, :password, :image, :created, :updated)'
             );
 
 
@@ -69,6 +69,7 @@ class  UserServiceSql{
                'first_name'=>$model->first_name,
                'last_name'=>$model->last_name,
                 'user_name'=>$model->user_name,
+                'rol'=>$model->rol,
                 'phone_number'=>$model->phone_number,
                 'direction'=>$model->direction,
                 'email'=>$model->email,
@@ -80,6 +81,8 @@ class  UserServiceSql{
         } catch (PDOException $ex) {
                  echo $ex->getMessage();
         }
+        $ultimoID = $this->_db->lastInsertId();//ULTIMO REGIST
+        return $ultimoID;
     }
 
     public function update(User $model): void{
@@ -118,6 +121,30 @@ class  UserServiceSql{
         }
     }
 
+    public function updateBasic(User $model): void{
+        try {
+            $stm = $this->_db->prepare('
+                UPDATE `user` SET first_name= :first_name ,last_name= :last_name ,phone_number= :phone_number ,direction= :direction ,updated= :updated  WHERE id = :id');
+
+
+            $now = date('Y-m-d H:i:s');//Fecha y Hora Sistem
+            $stm->execute([
+               'first_name'=>$model->first_name,
+               'last_name'=>$model->last_name,
+                'phone_number'=>$model->phone_number,
+                'direction'=>$model->direction,
+                'updated'=>$now,
+                'id'=>$model->id
+            ]);
+
+        } catch (PDOException $ex) {
+            print $ex->getMessage();
+
+        }
+
+
+    }
+
     public function delete(int $id): void{
         try {
             $stm = $this->_db->prepare(
@@ -130,10 +157,58 @@ class  UserServiceSql{
         }
     }
 
-    public function prueba(): string {
-        $valor="estoy es una prueba.";
-        return $valor;
-    }
+    public function trueEmail(User $model){ //Devuelva Falso o los datos
+         $result=false;
+        try {
+        $stm = $this->_db->prepare('SELECT first_name, last_name FROM `user` WHERE email = :email AND password= :password AND rol= :rol');
+            $stm->execute(['email' => $model->email,
+                            'password' =>$model->password,
+                            'rol' => 'moderador']);
+
+            $encontro=false;
+             while($result = $stm->fetch()){
+             $encontro=true;
+             $rows[]=$result;
+
+             }
+
+        } catch (PDOException $ex) {
+                 echo $ex->getMessage();
+        }
+
+
+        if ($encontro)
+          {
+        return json_encode($rows)  ;
+          }
+        return $encontro;
+    }//Devuelve (false) o Array Objeto
+
+    public function trueUserName(User $model){
+         $result=false;
+        try {
+        $stm = $this->_db->prepare('SELECT first_name, last_name FROM `user` WHERE user_name = :user_name AND password= :password AND rol= :rol');
+            $stm->execute(['user_name' => $model->user_name,
+                                    'password' =>$model->password,
+                                    'rol' => 'moderador']);
+
+             $encontro=false;
+             while($result = $stm->fetch()){
+             $encontro=true;
+             $rows[]=$result;
+
+             }
+
+        } catch (PDOException $ex) {
+                 echo $ex->getMessage();
+        }
+
+          if ($encontro)
+          {
+        return json_encode($rows)  ;
+          }
+        return $encontro;
+    }//Devuelve (false) o Array Objeto
 
 
 

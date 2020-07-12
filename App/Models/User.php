@@ -6,6 +6,7 @@ class User{
     public $first_name;
     public $last_name;
     public $user_name;
+    public $rol;//Funcion en la Plataforma
     public $phone_number;
     public $direction;
     public $email;
