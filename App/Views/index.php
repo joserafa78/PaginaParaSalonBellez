@@ -2,8 +2,8 @@
 <?php
 
 //include('includes/header.php');
-    use App\Views\includes\Header as Header;
-    new Header();
+use App\Views\includes\Header as Header;
+new Header();
 require_once 'App/Controllers/carrito.php';
 $AltoImgCarrusel=370;
 $AltoImgCarruselServi=330;

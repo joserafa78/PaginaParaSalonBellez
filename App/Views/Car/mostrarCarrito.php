@@ -80,6 +80,25 @@ new Header();
 
                  <div class="form-group">
                            <!--INFORMACION BASICA-->
+                     <div class="form-row">
+                         <div class="form-group col-md-6">
+                          <div>
+                    <label for="email">Correo Electronico:</label>
+                    <input name="email" type="text" class="form-control"  placeholder="Escriba Correo Electronico" value=""  required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>
+                    </div>
+                         </div>
+                     <div class="form-group col-md-6">
+                          <div>
+                    <label for="email">Repetir Correo Electronico:</label>
+                    <input name="emailDos" type="text" class="form-control"  placeholder="Escriba Correo Electronico" value=""  required>
+                      <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>
+                    </div>
+                         </div>
+                          </div>
+
             <div class="form-row">
                 <div class="form-group col-md-6">
                      <div >
@@ -100,24 +119,7 @@ new Header();
                 </div>
 
 
-                 <div class="form-row">
-                <div class="form-group col-md-6">
-                    <div>
-                    <label for="email">Correo Electronico:</label>
-                    <input name="email" type="text" class="form-control"  placeholder="Escriba Correo Electronico" value=""  required>
-                      <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>
-                    </div>
-                  </div>
-                  <div class="form-group col-md-6">
-                    <div>
-                    <label for="telefono">Telefono Celular Activo:</label>
-                   <input name="telefono" type="number" class="form-control" id="telefono" placeholder="Escriba su Telefono" value=""  required>
-                    <div class="valid-feedback">¡Ok válido!</div>
-                      <div class="invalid-feedback">Complete el campo.</div>
-                    </div>
-                </div>
-                   </div>
+
 
                     <div class="form-row">
                     <div class="form-group col-md-6">
@@ -140,12 +142,26 @@ new Header();
                     </div>
                     </div>
 
+                         <div class="form-row">
+                <div class="form-group col-md-6">
                     <div>
+                     <label for="telefono">Telefono Celular Activo:</label>
+                   <input name="telefono" type="number" class="form-control" id="telefono" placeholder="Escriba su Telefono" value=""  required>
+                    <div class="valid-feedback">¡Ok válido!</div>
+                      <div class="invalid-feedback">Complete el campo.</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-md-6">
+                      <div>
                     <label for="direccion">Direccion :</label>
                      <input name="direccion" type="text" class="form-control" id="direccion" placeholder="Direccion donde ser hara el Domicilio" value=""  required>
                       <div class="valid-feedback">¡Ok válido!</div>
                       <div class="invalid-feedback">Complete el campo.</div>
                     </div>
+                </div>
+                   </div>
+
+
 
                  </div>
                  <small  id="emailHelp" class="form-text text-muted" >

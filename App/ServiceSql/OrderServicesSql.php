@@ -72,7 +72,7 @@ public function get(int $id): ?Order {
 
         return $result;
     }
-public function create(Order $model): void{
+public function create(Order $model): string{
         try {
             // Begin transacation
             $this->_db->beginTransaction();
@@ -95,6 +95,9 @@ public function create(Order $model): void{
             $this->_db->rollBack();
             echo $ex;
         }
+     $ultimoID = $model->id;//ULTIMO REGIST
+        return $ultimoID;
+
     }
 
 //==========FUNCIONES PRIVATE================

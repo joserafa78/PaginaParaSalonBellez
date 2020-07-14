@@ -8,7 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Controllers\\DayDiaryControllers' => $baseDir . '/App/Controllers/DayDiaryControllers.php',
     'App\\Controllers\\UserControllers' => $baseDir . '/App/Controllers/UserControllers.php',
+    'App\\Controllers\\processEmail' => $baseDir . '/App/Controllers/enviaEmailControllers.php',
     'App\\Models\\DayDiary' => $baseDir . '/App/Models/Day_Diary.php',
+    'App\\Models\\Email' => $baseDir . '/App/Models/Email.php',
     'App\\Models\\EventOrder' => $baseDir . '/App/Models/Evento_Order.php',
     'App\\Models\\Eventos' => $baseDir . '/App/Models/Eventos.php',
     'App\\Models\\HoursDetail' => $baseDir . '/App/Models/hours_detail.php',
@@ -31,4 +33,9 @@ return array(
     'App\\Views\\includes\\Header' => $baseDir . '/App/Views/includes/header.php',
     'Config\\Database\\DbProvider' => $baseDir . '/Config/Database/DbProvider.php',
     'Config\\Request' => $baseDir . '/Config/Request.php',
+    'PHPMailer\\PHPMailer\\Exception' => $baseDir . '/PHPMailer/Exception.php',
+    'PHPMailer\\PHPMailer\\OAuth' => $baseDir . '/PHPMailer/OAuth.php',
+    'PHPMailer\\PHPMailer\\PHPMailer' => $baseDir . '/PHPMailer/PHPMailer.php',
+    'PHPMailer\\PHPMailer\\POP3' => $baseDir . '/PHPMailer/POP3.php',
+    'PHPMailer\\PHPMailer\\SMTP' => $baseDir . '/PHPMailer/SMTP.php',
 );

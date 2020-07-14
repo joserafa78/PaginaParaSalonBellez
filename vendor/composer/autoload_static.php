@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit63f7f5463fa6f76deb6c6851237bd307
 {
     public static $prefixLengthsPsr4 = array (
+        'P' =>
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'C' =>
         array (
             'Config\\' => 7,
@@ -18,6 +22,10 @@ class ComposerStaticInit63f7f5463fa6f76deb6c6851237bd307
     );
 
     public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/PHPMailer',
+        ),
         'Config\\' =>
         array (
             0 => __DIR__ . '/../..' . '/Config',
@@ -31,7 +39,9 @@ class ComposerStaticInit63f7f5463fa6f76deb6c6851237bd307
     public static $classMap = array (
         'App\\Controllers\\DayDiaryControllers' => __DIR__ . '/../..' . '/App/Controllers/DayDiaryControllers.php',
         'App\\Controllers\\UserControllers' => __DIR__ . '/../..' . '/App/Controllers/UserControllers.php',
+        'App\\Controllers\\processEmail' => __DIR__ . '/../..' . '/App/Controllers/enviaEmailControllers.php',
         'App\\Models\\DayDiary' => __DIR__ . '/../..' . '/App/Models/Day_Diary.php',
+        'App\\Models\\Email' => __DIR__ . '/../..' . '/App/Models/Email.php',
         'App\\Models\\EventOrder' => __DIR__ . '/../..' . '/App/Models/Evento_Order.php',
         'App\\Models\\Eventos' => __DIR__ . '/../..' . '/App/Models/Eventos.php',
         'App\\Models\\HoursDetail' => __DIR__ . '/../..' . '/App/Models/hours_detail.php',
@@ -54,6 +64,11 @@ class ComposerStaticInit63f7f5463fa6f76deb6c6851237bd307
         'App\\Views\\includes\\Header' => __DIR__ . '/../..' . '/App/Views/includes/header.php',
         'Config\\Database\\DbProvider' => __DIR__ . '/../..' . '/Config/Database/DbProvider.php',
         'Config\\Request' => __DIR__ . '/../..' . '/Config/Request.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/../..' . '/PHPMailer/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/../..' . '/PHPMailer/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/../..' . '/PHPMailer/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/../..' . '/PHPMailer/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/../..' . '/PHPMailer/SMTP.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

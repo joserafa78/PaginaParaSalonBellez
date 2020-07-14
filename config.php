@@ -14,8 +14,9 @@ define("MONEDA","Pesos/Colombia");
 //_____________CONEXION A BD___________________
 define('__CONFIG__',[
       'db'=>[
-    'host'=>'mysql:host=localhost;dbname=belleza;charset=utf8',   'user'=>'root',
-    'password'=>''
+          'host'=>'mysql:host=localhost;dbname=belleza;charset=utf8',
+          'user'=>'root',
+         'password'=>''
       ]
 ]);
 ?>
