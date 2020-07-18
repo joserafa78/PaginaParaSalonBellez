@@ -13,7 +13,7 @@ class processEmail{
 
 
 //METODOS
-public static function enviaEmail(Email $model):bool{
+public static function enviaEmail(Email $model){
     $destinatario =$model->addres;
     $nomDestinatario=$model->name;
     $titulomsj=$model->title;
@@ -24,10 +24,10 @@ public static function enviaEmail(Email $model):bool{
     $clave= "Goldnail2020";
 
 // Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
+$mail = new PHPMailer();
 
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->SMTPDebug = 0;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -54,10 +54,10 @@ $mail = new PHPMailer(true);
 
 if ($mail->send())
 {
-    return true;
+    return "Correo Enviado a:".$destinatario;
 
 }else{
-    return true;
+    return false;
 }
     }
 

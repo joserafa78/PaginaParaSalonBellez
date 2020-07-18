@@ -32,6 +32,7 @@ require '../../../config.php';
         mm = addZero(mm);
 
         $(document).ready(function() {
+            var URL= $('#url').val();
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next',
@@ -100,7 +101,8 @@ require '../../../config.php';
 
                     $('#ModalEventos').modal();
                 },  //OJO CAMBIAR URL...POR VARIABLE...
-    events:'http://localhost/GoldNails/App/Controllers/EventosControllers.php?accion=mostrarDataCompleta'
+
+    events:URL+'App/Controllers/EventosControllers.php?accion=mostrarDataCompleta'
 
             });
         });

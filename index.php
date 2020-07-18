@@ -1,29 +1,32 @@
 <?php
-
 //___________________________________
-require_once 'vendor/autoload.php';
-require_once 'config.php';
+require_once'vendor/autoload.php';
+require_once'config.php';
 //require_once 'App/Controllers/carrito.php';
 require_once "App/Views/index.php";//Index vistas.++++++
 //require_once"App/Views/Car/mostrarCarrito.php";
 
 
+
 //-----------------
+//var_dump(__CONFIG__);
 /*
+use App\ServiceSql\ServicesServiceSql as SerSQL;
+$SERV=new SerSQL();
+var_dump( $SERV->Sharh("secado") );
+echo " Jose Rafael.";
+
 //Email.
 use App\Controllers\processEmail as PROCESSEMAIL;
 use App\Models\Email as EMAIL;
 $mail = new EMAIL();
 $mail->addres="joserafa78@protonmail.com" ;
  $mail->name="Sr Rafafael" ;
-$mail->title= "Ensayo";
-$mail->body="Esto es la Cuarta Mensajee." ;
+$mail->title= "Ensayo Tres";
+$mail->body="Esto es el 2 Mensajee." ;
 $procemail = new PROCESSEMAIL();
 var_dump( $procemail::enviaEmail($mail));
 //-------------
-use App\ServiceSql\ServicesServiceSql as SerSQL;
-$SERV=new SerSQL();
-var_dump( $SERV->Sharh("secado") );
 
 use App\Models\User as user;//Modelo
 use App\ServiceSql\UserServiceSql as USERSql;
@@ -220,5 +223,5 @@ $orden->hoursdetail[]=$horaDetal_2;
 
 $ord =new OrderSql();
 $ord->create($orden);*/
-
+?>
 

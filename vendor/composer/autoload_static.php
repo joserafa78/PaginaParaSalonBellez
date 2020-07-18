@@ -61,6 +61,7 @@ class ComposerStaticInit63f7f5463fa6f76deb6c6851237bd307
         'App\\ServiceSql\\ServicesServiceSql' => __DIR__ . '/../..' . '/App/ServiceSql/ServicesServiceSql.php',
         'App\\ServiceSql\\UserServiceSql' => __DIR__ . '/../..' . '/App/ServiceSql/UserServiceSql.php',
         'App\\Views\\includes\\Footer' => __DIR__ . '/../..' . '/App/Views/includes/footer.php',
+        'App\\Views\\includes\\FooterBasico' => __DIR__ . '/../..' . '/App/Views/includes/footerBasico.php',
         'App\\Views\\includes\\Header' => __DIR__ . '/../..' . '/App/Views/includes/header.php',
         'Config\\Database\\DbProvider' => __DIR__ . '/../..' . '/Config/Database/DbProvider.php',
         'Config\\Request' => __DIR__ . '/../..' . '/Config/Request.php',

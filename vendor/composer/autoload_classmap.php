@@ -30,6 +30,7 @@ return array(
     'App\\ServiceSql\\ServicesServiceSql' => $baseDir . '/App/ServiceSql/ServicesServiceSql.php',
     'App\\ServiceSql\\UserServiceSql' => $baseDir . '/App/ServiceSql/UserServiceSql.php',
     'App\\Views\\includes\\Footer' => $baseDir . '/App/Views/includes/footer.php',
+    'App\\Views\\includes\\FooterBasico' => $baseDir . '/App/Views/includes/footerBasico.php',
     'App\\Views\\includes\\Header' => $baseDir . '/App/Views/includes/header.php',
     'Config\\Database\\DbProvider' => $baseDir . '/Config/Database/DbProvider.php',
     'Config\\Request' => $baseDir . '/Config/Request.php',

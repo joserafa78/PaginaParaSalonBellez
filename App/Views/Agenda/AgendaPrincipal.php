@@ -32,6 +32,7 @@ require '../../../config.php';
         mm = addZero(mm);
 
         $(document).ready(function() {
+            var URL= $('#url').val();
             $('#calendar').fullCalendar({
                 header: {
                     left: 'prev,next',
@@ -94,7 +95,7 @@ require '../../../config.php';
 
                     $('#ModalEventos').modal();
                 },  //OJO CAMBIAR URL...POR VARIABLE...
-             events:'http://localhost/GoldNails/App/Controllers/EventosControllers.php'
+             events:URL+'App/Controllers/EventosControllers.php'
 
             });
         });
@@ -103,7 +104,9 @@ require '../../../config.php';
 
 <!--html--->
 <div class="container">
-        <h1>Agenda</h1>
+        <br>
+        <br>
+        <br>
         <h2 class="lead">Agenda de Domicilios en Bogota.</h2>
 
         <nav aria-label="breadcrumb">

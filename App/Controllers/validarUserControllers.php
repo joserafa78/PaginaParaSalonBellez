@@ -17,17 +17,23 @@ switch ($accion)
 {
     case 'entrar':
         $valor = 'false';
-        $user->email=$_POST['correo'];
-        $user->password =$_POST['password'];
+
+        $email = $_POST['correo'];
+        $clave=$_POST["password"];
+
+        $user->email= $email;
+        $user->password =  $clave;
 
         $UserSQL = new UserSql();
         $resulado =$UserSQL->trueEmail($user);
         if (!$resulado)
         {
          echo $valor ;
+
         }else{
-            echo json_encode($resulado);
+            echo $resulado;
         }
+
 
 
 

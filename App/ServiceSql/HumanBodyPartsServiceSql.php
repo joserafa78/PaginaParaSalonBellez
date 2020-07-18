@@ -7,6 +7,7 @@ use PDOException;
 use Config\Database\DbProvider as Conexion;
 use App\Models\HumanBodyParts as BodyPart;
 
+
 class  HumanBodyPartsServiceSql{
 //ATRIBUTOS
     private $_db;//Conexion
